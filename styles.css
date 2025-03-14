@@ -16,7 +16,7 @@ body {
     background-color: #e600e6;
     padding: 20px;
     border-radius: 10px;
-    width: 420px;  /* Increased width */
+    width: 420px;  
     margin: auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -30,8 +30,8 @@ h1 {
 
 /* Game Board */
 .game-board {
-    width: 400px; /* Increased width */
-    height: 400px; /* Increased height */
+    width: 400px; 
+    height: 400px;
     background-color: purple;
     margin: 10px auto;
     border-radius: 10px;
@@ -181,9 +181,9 @@ h1 {
     /* Adjust game-over box for mobile devices */
     .game-over-box {
         width: 80%;
-        top: 70%; /* Position it at the bottom of the screen */
-        transform: translate(-50%, 0); /* Remove the 50% vertical centering */
-        max-height: 40%; /* Limit its height */
+        top: 70%; 
+        transform: translate(-50%, 0); 
+        max-height: 40%; 
     }
 
     /* Adjust congrats box for mobile devices */
@@ -191,7 +191,7 @@ h1 {
         width: 80%;
         top: 20%;
         left: 50%;
-        transform: translate(-50%, 0); /* Center horizontally */
+        transform: translate(-50%, 0);
     }
 }
 
@@ -199,6 +199,6 @@ h1 {
 @media screen and (max-width: 375px) {
     .game-over-box {
         width: 90%;
-        top: 65%; /* Adjust position further to not cover controls */
+        top: 65%; 
     }
 }
