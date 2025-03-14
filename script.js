@@ -10,6 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const gridSize = 20;  // We are using a 20x20 grid for a 400px board
     const cellSize = 20;  // Each cell is 20px
 
+    // Initialize the snake and food positions before game starts
+    snake = [{ x: 5, y: 5 }];
+    food = { x: Math.floor(Math.random() * gridSize), y: Math.floor(Math.random() * gridSize) };
+    direction = { x: 1, y: 0 }; // Start moving right
+    score = 0;
+    speed = 200;
+    isPaused = false;
+    scoreDisplay.textContent = "Score: 0";
+    gameOverBox.style.display = "none";
+    congratsBox.style.display = "none";
+    
+    // Draw the board immediately when page loads
+    drawBoard();
+
     // Function to start the game
     function startGame() {
         snake = [{ x: 5, y: 5 }];
@@ -32,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function drawBoard() {
         board.innerHTML = "";
 
+        // Draw the snake
         snake.forEach(segment => {
             let snakeElement = document.createElement("div");
             snakeElement.style.position = "absolute";
@@ -43,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             board.appendChild(snakeElement);
         });
 
+        // Draw the food
         let foodElement = document.createElement("div");
         foodElement.style.position = "absolute";
         foodElement.style.width = `${cellSize}px`;
