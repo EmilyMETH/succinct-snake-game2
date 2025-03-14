@@ -1,0 +1,204 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Game Container */
+.game-container {
+    background-color: #e600e6;
+    padding: 20px;
+    border-radius: 10px;
+    width: 420px;  /* Increased width */
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Game Board */
+.game-board {
+    width: 400px; /* Increased width */
+    height: 400px; /* Increased height */
+    background-color: purple;
+    margin: 10px auto;
+    border-radius: 10px;
+    border: 2px solid black;
+    position: relative;
+}
+
+/* Buttons */
+.pc-buttons, .mobile-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Start, Pause, Stop - Visible on All Devices */
+.btn {
+    background-color: darkviolet;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #b300b3;
+}
+
+/* Direction Buttons - Only on Mobile */
+.mobile-buttons {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.horizontal {
+    display: flex;
+    gap: 10px;
+}
+
+.direction {
+    background-color: pink;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Game Over Box */
+.game-over-box {
+    display: none;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+    text-align: center;
+    width: 150px;
+    z-index: 10;
+}
+
+.game-over-box h2 {
+    color: red;
+}
+
+#restartBtn {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#restartBtn:hover {
+    background-color: darkred;
+}
+
+/* Congratulatory Message */
+.congrats-box {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 215, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+    animation: shine 2s infinite;
+    width: 280px;
+}
+
+@keyframes shine {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* Score Display */
+.score {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .mobile-buttons {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-container {
+        width: 90%;
+    }
+
+    .game-board {
+        width: 90%;
+        height: 250px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .direction {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    /* Adjust game-over box for mobile devices */
+    .game-over-box {
+        width: 80%;
+        top: 70%; /* Position it at the bottom of the screen */
+        transform: translate(-50%, 0); /* Remove the 50% vertical centering */
+        max-height: 40%; /* Limit its height */
+    }
+
+    /* Adjust congrats box for mobile devices */
+    .congrats-box {
+        width: 80%;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, 0); /* Center horizontally */
+    }
+}
+
+/* Prevent Game Over Box from covering mobile controls on very small screens */
+@media screen and (max-width: 375px) {
+    .game-over-box {
+        width: 90%;
+        top: 65%; /* Adjust position further to not cover controls */
+    }
+}

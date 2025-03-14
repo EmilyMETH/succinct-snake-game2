@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>SUCCINCT SNAKE GAME</h1>
+        <div class="game-board"></div>
+        
+        <!-- PC Buttons (Always Visible) -->
+        <div class="pc-buttons">
+            <button class="btn" id="start">Start</button>
+            <button class="btn" id="pause">Pause</button>
+            <button class="btn" id="stop">Stop</button>
+        </div>
+
+        <!-- Mobile Direction Buttons (Only Visible on Small Devices) -->
+        <div class="mobile-buttons">
+            <button class="direction" id="up">Up</button>
+            <div class="horizontal">
+                <button class="direction" id="left">Left</button>
+                <button class="direction" id="right">Right</button>
+            </div>
+            <button class="direction" id="down">Down</button>
+        </div>
+
+        <p class="score">Score: 0</p>
+    </div>
+
+    <!-- Game Over Popup -->
+    <div class="game-over-box" id="gameOverBox">
+        <h2>Game Over!</h2>
+        <p>Your Score: <span id="finalScore">0</span></p>
+        <button id="restartBtn">Restart</button>
+    </div>
+
+    <!-- Congratulatory Message -->
+    <div class="congrats-box" id="congratsBox">
+        <h2>New High Score Achieved!</h2>
+        <p>Great Job!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
