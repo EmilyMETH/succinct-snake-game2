@@ -7,8 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const pauseButton = document.getElementById("pause");
 
     let snake, food, direction, score, highScore = 0, gameInterval = null, speed, isPaused;
-    const gridSize = 20;  // We are using a 20x20 grid for a 400px board
-    const cellSize = 20;  // Each cell is 20px
+    
+    // Set the grid size dynamically based on the gameboard width
+    const gameboardWidth = board.offsetWidth; // Get the gameboard width
+    const cellSize = 20; // Fixed cell size
+    let gridSize = Math.floor(gameboardWidth / cellSize); // Calculate grid size based on width
+    let gameboardHeight = gridSize * cellSize; // Set the height dynamically
+
+    // Dynamically update the height of the gameboard to match the grid
+    board.style.height = `${gameboardHeight}px`;
 
     // Initialize the snake and food positions before game starts
     snake = [{ x: 5, y: 5 }];
@@ -75,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
 
-        // Check for wall collisions (adjusted for 20x20 grid)
+        // Check for wall collisions (adjusted for dynamic grid size)
         if (
             head.x < 0 || head.y < 0 || head.x >= gridSize || head.y >= gridSize ||
             snake.some(s => s.x === head.x && s.y === head.y)

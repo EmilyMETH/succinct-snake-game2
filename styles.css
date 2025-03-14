@@ -16,7 +16,8 @@ body {
     background-color: #e600e6;
     padding: 20px;
     border-radius: 10px;
-    width: 420px;  
+    width: 90%;
+    max-width: 420px;	
     margin: auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -30,13 +31,14 @@ h1 {
 
 /* Game Board */
 .game-board {
-    width: 400px; 
-    height: 400px;
     background-color: purple;
     margin: 10px auto;
     border-radius: 10px;
     border: 2px solid black;
     position: relative;
+    width: 100%; /* Full width of the container */
+    max-width: 400px; /* Maximum width */
+    height: auto; /* Height will be dynamically set in JS */
 }
 
 /* Buttons */
@@ -198,7 +200,30 @@ h1 {
 /* Prevent Game Over Box from covering mobile controls on very small screens */
 @media screen and (max-width: 375px) {
     .game-over-box {
-        width: 90%;
-        top: 65%; 
+        width: 80%; /* Adjust the width to 80% of the screen */
+        top: 70%; /* Move it closer to the bottom */
+        transform: translate(-50%, 0); /* Adjust the vertical position */
+        max-height: 40%; /* Limit the height to 40% of the screen */
     }
 }
+
+@media screen and (max-width: 480px) {
+    .game-board {
+        width: 90%;
+        height: 250px;
+    }
+
+    .game-container {
+        width: 90%;
+    }
+}
+
+/* Mobile Buttons */
+@media screen and (max-width: 768px) {
+    .mobile-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
