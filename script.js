@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     food = { x: Math.floor(Math.random() * gridSize), y: Math.floor(Math.random() * gridSize) };
     direction = { x: 1, y: 0 };
     score = 0;
-    speed = 150;
+    speed = 200;
     isPaused = false;
     scoreDisplay.textContent = "Score: 0";
     gameOverBox.style.display = "none";
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         food = { x: Math.floor(Math.random() * gridSize), y: Math.floor(Math.random() * gridSize) };
         direction = { x: 1, y: 0 };
         score = 0;
-        speed = 150;
+        speed = 200;
         isPaused = false;
         scoreDisplay.textContent = "Score: 0";
         gameOverBox.style.display = "none";
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         pauseButton.textContent = "Pause";
 		
 		clearInterval(speedUpInterval);
-		speedUpInterval = setInterval(increaseSpeed, 4000);
+		speedUpInterval = setInterval(increaseSpeed, 7000);
     }
 
     function drawBoard() {
