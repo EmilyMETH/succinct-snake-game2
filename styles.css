@@ -11,6 +11,14 @@ body {
     height: 100vh;
 }
 
+/* Game logo */
+.game-logo {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px;
+}
+
 /* Game Container */
 .game-container {
     background-color: #e600e6;
@@ -184,6 +192,10 @@ h1 {
 		width: 70px;
     }
 
+    .game-logo {
+        max-width: 80px;
+    }
+
     /* Adjust game-over box for mobile devices */
     .game-over-box {
         width: 80%;
@@ -243,6 +255,10 @@ h1 {
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .game-container {
         width: 85%;
+    }
+
+    .game-logo {
+        max-width: 120px;
     }
 
     .game-board {
