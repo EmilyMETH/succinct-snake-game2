@@ -26,7 +26,7 @@ body {
 h1 {
     font-size: 22px;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 
 /* Game Board */
@@ -54,6 +54,7 @@ h1 {
     background-color: darkviolet;
     color: white;
     border: none;
+	font-weight: bold;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -90,6 +91,7 @@ h1 {
     justify-content: center;
 	width: 50px;
 	height: 50px;
+	font-weight: bold;
 }
 
 /* Game Over Box */
@@ -152,7 +154,7 @@ h1 {
 
 /* Score Display */
 .score {
-    font-size: 18px;
+    font-size: 20px;
     color: white;
     font-weight: bold;
     margin-top: 10px;
@@ -192,7 +194,7 @@ h1 {
 
     /* Adjust congrats box for mobile devices */
     .congrats-box {
-        width: 80%;
+        width: 60%;
         top: 20%;
         left: 50%;
         transform: translate(-50%, 0);
@@ -228,5 +230,59 @@ h1 {
         display: flex;
         gap: 10px;
     }
+	
+	.direction {
+        font-size: 16px;
+        padding: 15px;
+		height: 50px;
+		width: 70px;
+    }
 }
 
+/* For devices between 768px and 1024px (tablet-sized screens) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .game-container {
+        width: 85%;
+    }
+
+    .game-board {
+        width: 90%;
+        height: 300px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 12px 18px;
+    }
+
+    .mobile-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .direction {
+        font-size: 18px;
+        padding: 20px;
+        height: 60px;
+        width: 80px;
+    }
+
+    /* Adjust game-over box for tablet-sized screens */
+    .game-over-box {
+        width: 40%;
+        top: 55%; 
+        transform: translate(-50%, -50%);
+        max-height: 40%;
+    }
+
+    /* Adjust congrats box for tablet-sized screens */
+    .congrats-box {
+        width: 40%;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
