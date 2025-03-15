@@ -36,9 +36,9 @@ h1 {
     border-radius: 10px;
     border: 2px solid black;
     position: relative;
-    width: 100%; /* Full width of the container */
-    max-width: 400px; /* Maximum width */
-    height: auto; /* Height will be dynamically set in JS */
+    width: 100%;
+    max-width: 400px;
+    height: auto;
 }
 
 /* Buttons */
@@ -70,7 +70,7 @@ h1 {
     display: none;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 .horizontal {
@@ -81,10 +81,15 @@ h1 {
 .direction {
     background-color: pink;
     border: none;
-    padding: 10px;
+    padding: 15px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	width: 50px;
+	height: 50px;
 }
 
 /* Game Over Box */
@@ -154,11 +159,6 @@ h1 {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) {
-    .mobile-buttons {
-        display: flex;
-    }
-}
 
 @media screen and (max-width: 480px) {
     .game-container {
@@ -176,8 +176,10 @@ h1 {
     }
 
     .direction {
-        font-size: 14px;
-        padding: 8px;
+        font-size: 16px;
+        padding: 15px;
+		height: 50px;
+		width: 70px;
     }
 
     /* Adjust game-over box for mobile devices */
@@ -200,21 +202,17 @@ h1 {
 /* Prevent Game Over Box from covering mobile controls on very small screens */
 @media screen and (max-width: 375px) {
     .game-over-box {
-        width: 80%; /* Adjust the width to 80% of the screen */
-        top: 70%; /* Move it closer to the bottom */
-        transform: translate(-50%, 0); /* Adjust the vertical position */
-        max-height: 40%; /* Limit the height to 40% of the screen */
+        width: 80%;
+        top: 70%;
+        transform: translate(-50%, 0);
+        max-height: 40%;
     }
-}
-
-@media screen and (max-width: 480px) {
-    .game-board {
-        width: 90%;
-        height: 250px;
-    }
-
-    .game-container {
-        width: 90%;
+	
+	  .direction {
+        font-size: 16px;
+        padding: 15px;
+		height: 50px;
+		width: 70px;
     }
 }
 
@@ -224,6 +222,11 @@ h1 {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .horizontal {
+        display: flex;
+        gap: 10px;
     }
 }
 

@@ -8,52 +8,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let snake, food, direction, score, highScore = 0, gameInterval = null, speed, isPaused;
     
-    // Set the grid size dynamically based on the gameboard width
-    const gameboardWidth = board.offsetWidth; // Get the gameboard width
-    const cellSize = 20; // Fixed cell size
-    let gridSize = Math.floor(gameboardWidth / cellSize); // Calculate grid size based on width
-    let gameboardHeight = gridSize * cellSize; // Set the height dynamically
+    const gameboardWidth = board.offsetWidth;
+    const cellSize = 20;
+    let gridSize = Math.floor(gameboardWidth / cellSize);
+    let gameboardHeight = gridSize * cellSize;
 
-    // Dynamically update the height of the gameboard to match the grid
     board.style.height = `${gameboardHeight}px`;
 
-    // Initialize the snake and food positions before game starts
     snake = [{ x: 5, y: 5 }];
     food = { x: Math.floor(Math.random() * gridSize), y: Math.floor(Math.random() * gridSize) };
-    direction = { x: 1, y: 0 }; // Start moving right
+    direction = { x: 1, y: 0 };
     score = 0;
-    speed = 200;
+    speed = 100;
     isPaused = false;
     scoreDisplay.textContent = "Score: 0";
     gameOverBox.style.display = "none";
     congratsBox.style.display = "none";
     
-    // Draw the board immediately when page loads
     drawBoard();
 
-    // Function to start the game
     function startGame() {
         snake = [{ x: 5, y: 5 }];
         food = { x: Math.floor(Math.random() * gridSize), y: Math.floor(Math.random() * gridSize) };
-        direction = { x: 1, y: 0 }; // Start moving right
+        direction = { x: 1, y: 0 };
         score = 0;
-        speed = 200;
+        speed = 100;
         isPaused = false;
         scoreDisplay.textContent = "Score: 0";
         gameOverBox.style.display = "none";
         congratsBox.style.display = "none";
         clearInterval(gameInterval);
         gameInterval = setInterval(updateSnake, speed);
-
-        // Reset the pause button text to "Pause" when the game starts
         pauseButton.textContent = "Pause";
     }
 
-    // Function to draw the game board
     function drawBoard() {
         board.innerHTML = "";
 
-        // Draw the snake
         snake.forEach(segment => {
             let snakeElement = document.createElement("div");
             snakeElement.style.position = "absolute";
@@ -65,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
             board.appendChild(snakeElement);
         });
 
-        // Draw the food
         let foodElement = document.createElement("div");
         foodElement.style.position = "absolute";
         foodElement.style.width = `${cellSize}px`;
@@ -76,13 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
         board.appendChild(foodElement);
     }
 
-    // Function to update the snake's position
     function updateSnake() {
         if (isPaused) return;
 
         let head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
 
-        // Check for wall collisions (adjusted for dynamic grid size)
         if (
             head.x < 0 || head.y < 0 || head.x >= gridSize || head.y >= gridSize ||
             snake.some(s => s.x === head.x && s.y === head.y)
@@ -104,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
         drawBoard();
     }
 
-    // Function to handle game over
     function gameOver() {
         clearInterval(gameInterval);
         document.getElementById("finalScore").textContent = score;
@@ -117,16 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Attach event listener for restart button
     restartBtn.addEventListener("click", () => {
         gameOverBox.style.display = "none";
         startGame();
     });
 
-    // Add event listener for the start button
     document.getElementById("start").addEventListener("click", startGame);
 
-    // Add pause/resume functionality
     pauseButton.addEventListener("click", () => {
         if (isPaused) {
             isPaused = false;
@@ -139,26 +123,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Add event listener for the stop button (game over)
     document.getElementById("stop").addEventListener("click", () => { clearInterval(gameInterval); gameOver(); });
 
-    // Handle keyboard controls for the snake's movement
     document.addEventListener("keydown", (event) => {
         if (event.key === "ArrowUp" && direction.y === 0) direction = { x: 0, y: -1 };
         if (event.key === "ArrowDown" && direction.y === 0) direction = { x: 0, y: 1 };
         if (event.key === "ArrowLeft" && direction.x === 0) direction = { x: -1, y: 0 };
         if (event.key === "ArrowRight" && direction.x === 0) direction = { x: 1, y: 0 };
-        if (event.key === "Enter") {  // Handle Enter key for starting or restarting the game
+        if (event.key === "Enter") {  
             if (gameOverBox.style.display === "block") {
-                gameOverBox.style.display = "none"; // Hide game over box
-                startGame(); // Restart the game
+                gameOverBox.style.display = "none";
+                startGame();
             } else {
-                startGame(); // Start the game if it's not already started
+                startGame();
             }
         }
     });
 
-    // Mobile Controls (up, down, left, right)
     document.getElementById("up").addEventListener("click", () => {
         if (direction.y === 0) direction = { x: 0, y: -1 };
     });
@@ -170,5 +151,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.getElementById("right").addEventListener("click", () => {
         if (direction.x === 0) direction = { x: 1, y: 0 };
+    });
+
+    function increaseSpeed() {
+        if (gameInterval && speed > 50) { 
+            speed -= 10;
+            clearInterval(gameInterval);
+            gameInterval = setInterval(updateSnake, speed);
+        }
+    }
+
+    setInterval(increaseSpeed, 4000);
+
+    window.addEventListener("focus", () => { });
+
+    window.addEventListener("blur", () => {
+        clearInterval(gameInterval);
+        gameInterval = null;
     });
 });
