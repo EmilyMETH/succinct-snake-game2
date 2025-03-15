@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const pauseButton = document.getElementById("pause");
 
     let snake, food, direction, score, highScore = 0, gameInterval = null, speed, isPaused;
+	
+	let speedUpInterval = null;
     
     const gameboardWidth = board.offsetWidth;
     const cellSize = 20;
@@ -19,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     food = { x: Math.floor(Math.random() * gridSize), y: Math.floor(Math.random() * gridSize) };
     direction = { x: 1, y: 0 };
     score = 0;
-    speed = 100;
+    speed = 150;
     isPaused = false;
     scoreDisplay.textContent = "Score: 0";
     gameOverBox.style.display = "none";
@@ -32,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         food = { x: Math.floor(Math.random() * gridSize), y: Math.floor(Math.random() * gridSize) };
         direction = { x: 1, y: 0 };
         score = 0;
-        speed = 100;
+        speed = 150;
         isPaused = false;
         scoreDisplay.textContent = "Score: 0";
         gameOverBox.style.display = "none";
@@ -40,6 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(gameInterval);
         gameInterval = setInterval(updateSnake, speed);
         pauseButton.textContent = "Pause";
+		
+		clearInterval(speedUpInterval);
+		speedUpInterval = setInterval(increaseSpeed, 4000);
     }
 
     function drawBoard() {
@@ -94,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function gameOver() {
         clearInterval(gameInterval);
+		clearInterval(speedUpInterval);
         document.getElementById("finalScore").textContent = score;
         gameOverBox.style.display = "block";
 
@@ -161,7 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    setInterval(increaseSpeed, 4000);
 
     window.addEventListener("focus", () => { });
 

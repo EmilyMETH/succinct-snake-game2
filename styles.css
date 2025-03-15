@@ -257,7 +257,7 @@ h1 {
 
     .mobile-buttons {
         display: flex;
-        flex-direction: row;
+        flex-direction: column; /* Display horizontal on tablet */
         justify-content: center;
         gap: 15px;
         margin-top: 10px;
@@ -266,8 +266,8 @@ h1 {
     .direction {
         font-size: 18px;
         padding: 20px;
-        height: 60px;
-        width: 80px;
+        height: 40px;
+        width: 60px;
     }
 
     /* Adjust game-over box for tablet-sized screens */
